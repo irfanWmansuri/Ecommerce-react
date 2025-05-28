@@ -13,7 +13,7 @@ import { Layout } from './Routes/Layout.jsx'
 import { MyAccount } from './Routes/MyAccount.jsx'
 import Dashboard from './Routes/DashRoutes/Dashboard.jsx'
 import Orders from './Routes/DashRoutes/Orders.jsx'
-import EditProducts from './Routes/DashRoutes/EditProducts.jsx'
+import { DashProducts } from './Routes/DashRoutes/DashProducts.jsx'
 import Customers from  './Routes/DashRoutes/Customers.jsx'
 import Reports from './Routes/DashRoutes/Reports.jsx'
 import { DashboardLayout } from './Routes/DashboardLayout.jsx'
@@ -42,7 +42,7 @@ createRoot(document.getElementById('root')).render(
               } /> */}
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/orders' element={<Orders />} />
-              <Route path='/products' element={<EditProducts />} />
+              <Route path='/products' element={<DashProducts />} />
               <Route path='/customers' element={<Customers />} />
               <Route path='/reports' element={<Reports />} />
               <Route path='/products/add' element={<Add />} />

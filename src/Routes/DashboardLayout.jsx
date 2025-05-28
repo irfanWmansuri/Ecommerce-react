@@ -2,10 +2,11 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { LeftArrowIcon, HomeIcon, OrderIcon, ProductsIcon, CustomersIcon, ReportsIcon, DashMenuIcon } from '../utils/Icons';
 import Tooltip from '../utils/Tooltip';
+import { SubMenu } from '../component/DashSubmenus';
 
 export const NavLinks = [
   { title: 'Dashboard', link: '/dashboard', icon: HomeIcon },
-  { title: 'Orders', link: '/orders', icon: OrderIcon },
+  { title: 'Orders', link: '/orders', icon: OrderIcon, },
   {
     title: 'Products',
     link: '/products',
@@ -48,8 +49,8 @@ export const DashboardLayout = () => {
                 <li key={index} className="relative group">
                   <div onClick={() => !openMenu && Array.isArray(nav.child) && handleNavChild(index)}>
                     <NavLink to={nav.link} className={({ isActive }) =>
-                      `flex items-center justify-between p-2 text-gray-600 dark:text-gray-400 transition duration-300 ease-in-out rounded-l-md
-                      ${isActive ? 'dark:bg-gray-900 bg-gray-100 font-bold' : 'dark:bg-gray-800'} 
+                      `flex items-center justify-between p-2 text-gray-600 dark:text-gray-400 transition duration-300 ease-in-out rounded-l-md hover:text-primary-500
+                      ${isActive ? 'dark:bg-gray-900 bg-gray-100 font-bold dark:text-primary-500 text-primary-500' : 'dark:bg-gray-800'} 
                       ${openMenu ? 'justify-center' : ''}`
                     }>
                       {openMenu ? (
@@ -77,7 +78,7 @@ export const DashboardLayout = () => {
                     <>
                       {/* Expanded mode: show/hide submenu on click */}
                       {!openMenu && openSubmenu === index && (
-                        <ul className="pl-8 mt-1 space-y-1 transition-all">
+                        <SubMenu isOpen={!openMenu && openSubmenu === index}>
                           {nav.child.map((child, i) => (
                             <li key={i} className='list-disc text-gray-600'>
                               <NavLink to={child.link} className={({ isActive }) =>
@@ -89,7 +90,7 @@ export const DashboardLayout = () => {
                               </NavLink>
                             </li>
                           ))}
-                        </ul>
+                        </SubMenu>
                       )}
 
                       {/* Collapsed mode: show submenu on hover to the right */}

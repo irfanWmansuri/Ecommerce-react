@@ -14,8 +14,10 @@
 body, html{font-family: "Inter", sans-serif;}
 .iiz__btn.iiz__hint{display: none;}
 
+
 /* a.active{color: aqua;} */
 button[disabled]{ cursor: not-allowed; color: #dfdfdfd7; opacity: .5;}
+
 
 .modalwrap{ perspective: 1000px; position: relative; width: 100%; height: 100vh; margin: 0 auto;}
 .loginwrap{width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.3s ease-in-out; transform-origin: center;}
@@ -26,14 +28,22 @@ button[disabled]{ cursor: not-allowed; color: #dfdfdfd7; opacity: .5;}
 
 .loginpopup .modalbutton{display: none;}
 
+
 /* CLEAR FLOAT */
 .clear {clear:both; padding:0; margin:0; overflow:hidden; height:0}
+
+
 /* width */
 ::-webkit-scrollbar {width: 5px; height: 5px;}
+
+
 /* Handle */
 ::-webkit-scrollbar-thumb {background: #1d4ed8; }
+
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {background: #1e3a8a; }
+
 
 input:-webkit-autofill {-webkit-text-fill-color: #fff !important; box-shadow: 0 0 0 1000px #1f2937 inset !important;}
 input:-moz-autofill{-webkit-text-fill-color: #fff !important; box-shadow: 0 0 0 1000px #1f2937 inset !important;}
@@ -48,4 +58,67 @@ input:-moz-autofill{-webkit-text-fill-color: #fff !important; box-shadow: 0 0 0 
 .tox .tox-statusbar{border-top: 1px solid rgb(55 65 81) !important;}
 .tox :not(svg):not(rect){color: #8496AB !important;}
 .tox .tox-tbtn--disabled svg, .tox .tox-tbtn--disabled:hover svg, .tox .tox-tbtn:disabled svg, .tox .tox-tbtn:disabled:hover svg { fill: rgba(52, 73, 95, 0.5) !important; }
+
+
+/* DataTable Css */
+
+.dt-layout-row { display: flex ; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; padding: 20px; }
+.dt-layout-table{padding: unset; display: unset;}
+.dt-search input { margin-left: 5px; padding: 3px; border-radius: 5px; outline: none; transition: 0.3s; font-size: 14px; background: #111827;}
+.dt-search input:focus, .dt-length select:focus { box-shadow: 0 0 0 .15rem rgba(12, 67, 248, 0.671); color: #fff;}
+.dt-length select { padding: 3px; border-radius: 5px; outline: none; transition: 0.3s; font-size: 14px; background: #111827; }
+.dt-paging-button.disabled { color: #aaa; cursor: not-allowed; border-color: #ddd; background-color: #f8f8f8; }
+
+ .data-table tbody tr:hover {
+    background-color: #111827;
+  }
+
+/* 📌 Pagination Styling */
+
+/* 📌 Pagination Container */
+.dt-paging { display: flex; justify-content: center; align-items: center; margin-top: 15px; } 
+
+/* 📌 Pagination Buttons */
+.dt-paging-button { padding: 4px 10px; margin: 0 5px; border: 1px solid #334155; border-radius: 5px; background: #111827; cursor: pointer; transition: 0.3s; font-size: 14px; color: #888; } 
+
+/* 📌 Hover & Focus Effects */
+.dt-paging-button:hover, .dt-paging-button:focus { background-color: #1D4ED8; color: white; border-color: #1D4ED8; } 
+
+/* 📌 Active Page Button */
+.dt-paging-button.current { background-color: #1D4ED8; color: white; border-color: #1D4ED8; font-weight: bold; } 
+
+/* 📌 Disabled Buttons */
+.dt-paging-button.disabled { color: #444; cursor: not-allowed; border-color: #334155; background-color: #111827; } 
+
+/* 📌 First, Previous, Next, Last Buttons */
+.dt-paging-button.first, .dt-paging-button.previous, .dt-paging-button.next, .dt-paging-button.last { font-weight: bold; } 
+
+/* 📌 Ellipsis */
+.ellipsis { padding: 8px; font-size: 14px; color: #666; } 
+
+/* Loader */
+.loader { text-align: center; padding: 20px; font-size: 18px; color: #555; }
+
+/* Ensure DataTables sorting arrows are visible */
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+  position: relative;
+  padding-right: 24px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 12px 12px;
+}
+
+table.dataTable thead .sorting {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'><path d='M7 10l5-5 5 5z'/></svg>");
+}
+
+table.dataTable thead .sorting_asc {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'><path d='M7 14l5 5 5-5z'/></svg>");
+}
+
+table.dataTable thead .sorting_desc {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'><path d='M7 10l5-5 5 5z'/></svg>");
+}
 

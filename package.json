@@ -12,7 +12,7 @@
   "dependencies": {
     "@tinymce/tinymce-react": "^6.1.0",
     "axios": "^1.8.3",
-    "datatables.net-dt": "^2.3.0",
+    "datatables.net-dt": "^2.3.1",
     "framer-motion": "^12.11.0",
     "react": "^19.0.0",
     "react-datepicker": "^8.3.0",
