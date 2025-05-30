@@ -1,50 +1,55 @@
 import { NavLink } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { CartContext } from "../context/CartContext";
-import { Toaster } from 'react-hot-toast';
 
 
 export default function ProductHomeCard({ productItem }) {
+  const { title, price, thumbnail } = productItem;
   const { addToCart, originalItemPrice } = useContext(CartContext);
 
- function initTooltips() {
-    const tooltipButtons = document.querySelectorAll("[data-tooltip-target]");
-  
-    tooltipButtons.forEach((button) => {
-      const tooltipId = button.getAttribute("data-tooltip-target");
-      const tooltip = document.getElementById(tooltipId);
-  
-      if (!tooltip) return;
-  
-      button.addEventListener("mouseenter", () => {
-        tooltip.classList.remove("invisible", "opacity-0");
-        tooltip.classList.add("visible", "opacity-100");
-  
-        const rect = button.getBoundingClientRect();
-        const scrollY = window.scrollY || document.documentElement.scrollTop;
-        const scrollX = window.scrollX || document.documentElement.scrollLeft;
-  
-        tooltip.style.top = `${rect.top + scrollY - tooltip.offsetHeight - 8}px`;
-        tooltip.style.left = `${rect.left + scrollX + rect.width / 2 - tooltip.offsetWidth / 2}px`;
-      });
-  
-      button.addEventListener("mouseleave", () => {
-        tooltip.classList.add("invisible", "opacity-0");
-        tooltip.classList.remove("visible", "opacity-100");
-      });
-    });
-  }
-  initTooltips();
+ useEffect(() => {
+  const tooltipButtons = document.querySelectorAll("[data-tooltip-target]");
+
+  tooltipButtons.forEach((button) => {
+    const tooltipId = button.getAttribute("data-tooltip-target");
+    const tooltip = document.getElementById(tooltipId);
+    if (!tooltip) return;
+
+    const show = () => {
+      tooltip.classList.remove("invisible", "opacity-0");
+      tooltip.classList.add("visible", "opacity-100");
+
+      const rect = button.getBoundingClientRect();
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const scrollX = window.scrollX || document.documentElement.scrollLeft;
+
+      tooltip.style.top = `${rect.top + scrollY - tooltip.offsetHeight - 8}px`;
+      tooltip.style.left = `${rect.left + scrollX + rect.width / 2 - tooltip.offsetWidth / 2}px`;
+    };
+
+    const hide = () => {
+      tooltip.classList.add("invisible", "opacity-0");
+      tooltip.classList.remove("visible", "opacity-100");
+    };
+
+    button.addEventListener("mouseenter", show);
+    button.addEventListener("mouseleave", hide);
+
+    return () => {
+      button.removeEventListener("mouseenter", show);
+      button.removeEventListener("mouseleave", hide);
+    };
+  });
+}, []);
   
 
   return (
     <>
-    <Toaster position="top-right"/>
       <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 h-[100%]">
         <div className="h-56 w-full">
-          <NavLink to={`/product/${productItem.id}`}>
-            <img className="mx-auto h-full dark:hidden" src={productItem.thumbnail} alt="thumbnail" />
-            <img className="mx-auto hidden h-full dark:block" src={productItem.thumbnail}  alt="thumbnail" />
+          <NavLink to={`/product/id/${productItem.id}`}>
+            <img className="mx-auto h-full dark:hidden" src={thumbnail} alt="thumbnail" />
+            <img className="mx-auto hidden h-full dark:block" src={thumbnail}  alt="thumbnail" />
           </NavLink>
         </div>
         <div className="pt-6">
@@ -79,7 +84,7 @@ export default function ProductHomeCard({ productItem }) {
             </div>
           </div>
 
-          <NavLink  to={`/products/${productItem.id}`} className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">{productItem.title}</NavLink>
+          <NavLink  to={`/product/id/${productItem.id}`} className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">{title}</NavLink>
 
           <div className="mt-2 flex items-center gap-2">
             <div className='flex items-center'>
@@ -102,7 +107,7 @@ export default function ProductHomeCard({ productItem }) {
 
             </p>
             </div>
-            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">({productItem.reviews.length})</p>
+            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">({Array.isArray(productItem.reviews) ? productItem.reviews.length : 0})</p>
           </div>
 
           <ul className="mt-2 flex items-center gap-4">

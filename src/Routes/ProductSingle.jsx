@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react"
 import { NavLink, useParams } from "react-router-dom"
 import axios from "axios";
 import { CartContext } from "../context/CartContext";
-import { Toaster } from 'react-hot-toast';
 import 'react-inner-image-zoom/lib/styles.min.css';
 import InnerImageZoom from "react-inner-image-zoom";
 
@@ -41,7 +40,6 @@ export default function ProductSingle() {
 
   return (
     <>
-      <Toaster position="top-right" />
       {SingleData ? (
         <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased">
           <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">

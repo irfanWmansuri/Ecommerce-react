@@ -1,8 +1,9 @@
 import { Editor } from '@tinymce/tinymce-react';
 
-export default function App() {
+export default function AdvancedEditor({ value, onChange }) {
   return (
     <Editor
+      initialValue={value}
       apiKey="z06n81klddcs6z2utcoffpyxrk38bca2xzi2ha82a47ebidz"
       init={{
         height: 200,
@@ -18,6 +19,9 @@ export default function App() {
       }
     `
       }}
+      
+      onEditorChange={(content) => onChange(content)}
+
     />
   );
 }

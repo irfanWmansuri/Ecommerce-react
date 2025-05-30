@@ -20,18 +20,21 @@ import { DashboardLayout } from './Routes/DashboardLayout.jsx'
 // import ProtectedRoutes from './component/ProtectedRoutes.jsx'
 import { Add } from './Routes/DashRoutesChild/Add.jsx'
 import { Edit } from './Routes/DashRoutesChild/Edit.jsx'
+import ProductDetails from './Routes/ProductDetails.jsx' 
+import { Toaster } from 'react-hot-toast'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <CartProvider>
       <BrowserRouter>
+      <Toaster position="top-right" />
         <Routes>
           <Route element={<Layout />}>
             <Route path='/' element={<ProductHome />} />
-            <Route path='/product/:itemId' element={<ProductSingle />} />
+            <Route path="/product/id/:itemId" element={<ProductSingle />} />
+            <Route path="/product/slug/:slug" element={<ProductDetails />} />
             <Route path='/checkout' element={<Checkout />} />
-            <Route path='/mycart' element={<MyCart />} />
             <Route path='/mycart' element={<MyCart />} />
             {/* <Route path='/maths' element={<Maths />} /> */}
             <Route path='/payment' element={<Payment />} />
@@ -45,8 +48,8 @@ createRoot(document.getElementById('root')).render(
               <Route path='/products' element={<DashProducts />} />
               <Route path='/customers' element={<Customers />} />
               <Route path='/reports' element={<Reports />} />
-              <Route path='/products/add' element={<Add />} />
-              <Route path='/products/edit' element={<Edit />} />
+              <Route path='/products/add-product' element={<Add />} />
+              <Route path='/products/edit-product' element={<Edit />} />
             </Route>
           </Route>
         </Routes>

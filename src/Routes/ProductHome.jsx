@@ -1,23 +1,24 @@
-import { NavLink } from 'react-router-dom';
 import ProductHomeCard from '../component/ProductHomeCard';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Offer } from '../component/Offer';
+import { CartContext } from '../context/CartContext';
 
 export function ProductHome() {
-
-
+  const {userProducts} = useContext(CartContext);
+  
   const [data, setData] = useState([])
   const [productLimit, setProductLimit] = useState(20);
   const [loading, setLoading] = useState(true);
-
-
+  
+  
   const loadMore = () => {
     setLoading(!loading);
     setProductLimit(limit => limit+20);
-    // setLoading(true)
   }
-
+  
+  const allProducts = [...userProducts, ...data];
+  // console.log("User Products from Context:", userProducts);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -58,7 +59,7 @@ export function ProductHome() {
           </div>
           <div className='productcardsec'>
             <ul className="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
-              {data && data.map((item) =>
+              {allProducts.map((item) =>
               (<li key={item.id}>
                 <ProductHomeCard productItem={item} />
               </li>)

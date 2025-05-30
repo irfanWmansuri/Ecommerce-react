@@ -2,13 +2,12 @@ import { useState } from "react"
 import DatePicker from "react-datepicker"
 import { CalenderIcon, TrashIcon } from '../utils/Icons'
 
-export default function AddDiscount() {
+export default function AddDiscount({ discountPrice, setDiscountPrice}) {
     const [sDate, setSdate] = useState(null);
     const [eDate, setEdate] = useState(null);
 
     const TableDiscount = [
         { Title: 'Group', },
-        { Title: 'Quantity' },
         { Title: 'Discount' },
         { Title: 'Date start' },
         { Title: 'Date end' },
@@ -38,11 +37,9 @@ export default function AddDiscount() {
                                 </select>
                             </td>
                             <td className="px-4 py-2 border-r border-gray-700">
-                                <input type="text" placeholder="10" className="w-full focus-within:border-primary-600 bg-gray-900 text-white border border-gray-700 text-sm py-1 px-2 transition-colors duration-150 ease-in-out focus:outline-none" />
+                                <input value={discountPrice} onChange={(e) => setDiscountPrice(e.target.value)} type="text" placeholder="10" className="w-full focus-within:border-primary-600 bg-gray-900 text-white border border-gray-700 text-sm py-1 px-2 transition-colors duration-150 ease-in-out focus:outline-none" />
                             </td>
-                            <td className="px-4 py-2 border-r border-gray-700">
-                                <input type="text" placeholder="$10.00" className="w-full focus-within:border-primary-600 bg-gray-900 text-white border border-gray-700 text-sm py-1 px-2 transition-colors duration-150 ease-in-out focus:outline-none" />
-                            </td>
+       
                             <td className="px-4 py-2 border-r border-gray-700">
                                 <div className="flex items-center gap-2">
                                     <CalenderIcon />

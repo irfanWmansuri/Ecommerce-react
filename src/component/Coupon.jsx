@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export function Coupon() {
   const { totalCartPrice, setDiscountTotal, setPriceAfterDiscount } = useContext(CartContext)
@@ -94,7 +94,6 @@ export function Coupon() {
 
   return (
     <>
-    <Toaster position="top-right" reverseOrder={false} />
       <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
         <div className="space-y-4">
           <div>

@@ -12,8 +12,8 @@ export const NavLinks = [
     link: '/products',
     icon: ProductsIcon,
     child: [
-      { title: 'Add', link: '/products/add' },
-      { title: 'Edit', link: '/products/edit' },
+      { title: 'Add', link: '/products/add-product' },
+      { title: 'Edit', link: '/products/edit-product' },
     ],
   },
   { title: 'Customers', link: '/customers', icon: CustomersIcon },

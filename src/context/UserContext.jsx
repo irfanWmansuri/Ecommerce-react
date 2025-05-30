@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from "react";
-import { Toaster, toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { CartContext } from "./CartContext";
 import { useNavigate } from "react-router-dom";
 

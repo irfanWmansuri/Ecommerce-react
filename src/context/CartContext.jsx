@@ -17,6 +17,7 @@ export const CartProvider = ({ children }) => {
     field2: false,
     field3: false
   });
+  
 
   const userName = localStorage.getItem('userName');
   useEffect(()=>{
@@ -107,13 +108,24 @@ const showHidePass = (field)=> {
   setShowPassword(prev => ({
     ...prev, [field] : !prev[field]
   }))
-  console.log(showPassword);
 }
 
-  
+//Add new products,
+const [userProducts, setUserProducts] = useState(() => {
+  const saved = localStorage.getItem("userProducts");
+  return saved ? JSON.parse(saved) : [];
+});
+const addProduct = (newProduct) => {
+    setUserProducts(prev => [...prev, newProduct])
+    // console.log(newProduct);
+  };
+
+useEffect(() => {
+  localStorage.setItem("userProducts", JSON.stringify(userProducts));
+}, [userProducts]);
 
   return (
-    <CartContext.Provider value={{ cartList, setCartList, addToCart, deleteFromLocal, IncrementItem, DecrementItem, originalItemPrice, totalCartPrice, setTotalCartPrice, discountTotal, setDiscountTotal ,priceAfterDiscount,setPriceAfterDiscount, isLoggined, setIsLoggined, handleLoginPoppup, showModal, setShowModal, handleLogout, showLogin, setShowLogin, showHidePass, showPassword}}>
+    <CartContext.Provider value={{ cartList, setCartList, addToCart, deleteFromLocal, IncrementItem, DecrementItem, originalItemPrice, totalCartPrice, setTotalCartPrice, discountTotal, setDiscountTotal ,priceAfterDiscount,setPriceAfterDiscount, isLoggined, setIsLoggined, handleLoginPoppup, showModal, setShowModal, handleLogout, showLogin, setShowLogin, showHidePass, showPassword, userProducts, addProduct}}>
       {children}
     </CartContext.Provider>
   );

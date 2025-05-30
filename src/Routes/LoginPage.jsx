@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { UserIcon, LockIcon, GoogleIcon, VisibilityIcon, VisibilityOffIcon } from "../utils/Icons"
 import { useContext, useState } from "react"
-import { Toaster, toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { CartContext } from "../context/CartContext";
 
 export function LoginPage() {

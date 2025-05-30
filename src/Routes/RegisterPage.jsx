@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { UserIcon, LockIcon, LockIconDark, MailIcon, VisibilityIcon, VisibilityOffIcon } from "../utils/Icons"
 import { CartContext } from "../context/CartContext";
 import { useContext, useState, useEffect } from "react";
-import { Toaster, toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
 export function RegisterPage() {
   const { showLogin, setShowLogin, handleLoginPoppup, setIsLoggined, setShowModal, showHidePass, showPassword } = useContext(CartContext);
